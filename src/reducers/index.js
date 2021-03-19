@@ -10,6 +10,11 @@ import {START_SMURF_FETCH,
 //  - a boolean indicating if the app is loading
 //  - a string indicating a possible error message
 export const initialState = {
+    name:"",
+    position:"",
+    nickname:"",
+    description:"",
+
     smurfs: [], //this will be array of smurfs
     isLoading: false, 
     errMessage: '' //this will be possible error message
@@ -28,13 +33,15 @@ export default function reducer (state = initialState, action) {
             return {
                 ...state,
                 smurfs: action.payload,
-                isLoading: false
+                isLoading: false,
+                errMessage: ''
             }
 //5. Add in a reducer cases to accomidate the failed smurf api fetch.
         case SMURF_FETCH_ERROR:
             return {
                 ...state,
-                errMessage: action.error
+                isLoading: false,
+                errMessage: action.payload
             }
 //6. Add in a reducer case to accomidate adding a smurf 
 ///(including the name, nickname, position, summary 
@@ -51,13 +58,13 @@ export default function reducer (state = initialState, action) {
 
                 isLoading: state.isLoading,
 
-                errMessage: state.errMessage
+                errMessage: state.errorMessage
             }
 //7. Add in a reducer case that adds in a value to the error message.
         case ADD_ERROR_VALUE:
             return {
                 ...state,
-                errMessage: "ERROR!"
+                errMessage: state.errorMessage
             }
 
 

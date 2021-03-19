@@ -17,27 +17,33 @@ const middelewares = [thunk];
 ///performs an axios call to retreive smurfs from our server, 
 ///saves the result of that call to our state 
 ///and shows an error if one is made.
-function fetchSmurfs() {
+export const fetchSmurfs = () => {
 
-    return function(dispatch) {
-        
+    return (dispatch) => {
+        dispatch({type: START_SMURF_FETCH});
 
-        return axios.post().then(res => {
-            const getSmurfs = {type: START_SMURF_FETCH}
-        })
+        axios.get("http://localhost:3000/smurfs")
+            .then((res) => {
+                dispatch({type: SMURF_FETCH_SUCCESSFUL, payload: res.data.smurfs});
+            })
+            .catch((err) => {
+                dispatch({type: SMURF_FETCH_ERROR, payload: err.message});
+            });
       
-        
     }
-    
-}
 
-createStore(applyMiddleware(...middelewares));
+}
 
 //2. Add a standard action that allows us to 
 ///add new smurf (including the name, nickname, position, summary)
-
+export const addNewSmurf = (id) => {
+    return ({type:ADD_NEW_SMURF, payload: id});
+}
 
 
 
 //3. Add a standard action that allows us to 
 //set the value of the error message slice of state.
+export const addError = () => {
+    return ({ type:ADD_ERROR_VALUE})
+}
