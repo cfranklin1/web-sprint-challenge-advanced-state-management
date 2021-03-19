@@ -1,4 +1,9 @@
-import {START_SMURF_FETCH} from ./actions;
+import {START_SMURF_FETCH, 
+        SMURF_FETCH_SUCCESSFUL, 
+        SMURF_FETCH_ERROR, 
+        ADD_ERROR_VALUE, 
+        ADD_NEW_SMURF} from '../actions';
+
 //Task List:
 //1. Adds the following state values into the initialState:
 //  - an array of smurfs

@@ -2,6 +2,13 @@ import axios from 'axios';
 import thunk from 'redux-thunk';
 import {applyMiddleware, createStore} from 'redux';
 
+
+export const START_SMURF_FETCH = "START_SMURF_FETCH";
+export const SMURF_FETCH_SUCCESSFUL = "SMURF_FETCH_SUCCESSFUL";
+export const SMURF_FETCH_ERROR = "SMURF_FETCH_ERROR";
+export const ADD_ERROR_VALUE = "ADD_ERROR_VALUE";
+export const ADD_NEW_SMURF = "ADD_NEW_SMURF";
+
 const middelewares = [thunk];
 
 //Task List:
@@ -12,9 +19,16 @@ const middelewares = [thunk];
 ///and shows an error if one is made.
 function fetchSmurfs() {
 
-    return function() {
+    return function(dispatch) {
+        
 
+        return axios.post().then(res => {
+            const getSmurfs = {type: START_SMURF_FETCH}
+        })
+      
+        
     }
+    
 }
 
 createStore(applyMiddleware(...middelewares));

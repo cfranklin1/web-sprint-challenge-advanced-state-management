@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 //1. Add in all necessary components and libary methods.
 import {applyMiddleware, createStore} from 'redux';
 import thunk from 'redux-thunk';
-import Provider from 'react-redux';
+import {Provider} from 'react-redux';
 import reducer from './reducers';
 
 import "./index.css";
