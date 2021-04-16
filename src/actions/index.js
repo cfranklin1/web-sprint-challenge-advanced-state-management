@@ -17,9 +17,9 @@ const middelewares = [thunk];
 ///performs an axios call to retreive smurfs from our server, 
 ///saves the result of that call to our state 
 ///and shows an error if one is made.
-export const fetchSmurfs = () => {
+export const fetchSmurfs = () => dispatch => {
 
-    return (dispatch) => {
+    return dispatch => {
         dispatch({type: START_SMURF_FETCH});
 
         axios.get("http://localhost:3000/smurfs")
